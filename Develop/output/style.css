@@ -1,13 +1,26 @@
 .card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 1%;
+    width: 30%;
+    float: left;
 }
 
 .team-heading{
     background-color:#ff414e ;
     color: #ffffff;   
 }
+
 .team-heading h1{
     font-size: 5rem;
+}
+
+
+.manager{
+    /* background-color: #ffde22; */
+    /* background-color: #FF5A09 ; */
+    background-color: #ff8928;
+    color: #ffffff;
+    
 }
 .engineer{
 /* background-color: #ffde22; */
@@ -20,25 +33,12 @@ color: #ffffff;
     color: #ffffff;  
 }
 
-.manager{
-    /* background-color: #ffde22; */
-    /* background-color: #FF5A09 ; */
-    background-color: #ff8928;
-    color: #ffffff;
-    
-}
-
-.card{
-    margin: 1%;
-    width: 30%;
-    float: left;
-}
 
 
 .card-body{
     background-color: #f1f0ee;
 }
 
-.list-group li{
+.list-group li{ 
     background-color: #ffffff;
 }
