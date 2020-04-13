@@ -92,13 +92,13 @@ const questions2 = [
         type: "input",
         message: "Please enter Intern's email:",
         name: "internemail",
-        when: (answer) => answer.interid
+        when: (answer) => answer.internid
     },
     {
         type: "input",
         message: "Please enter Intern's school:",
         name: "internschool",
-        when: (answer) => answer.intermail
+        when: (answer) => answer.internemail
     },
 
     {
@@ -112,71 +112,70 @@ const questions2 = [
 
 ]
 
+
+// Write code to use inquirer to gather information about the development team members,
+// and to create objects for each team member (using the correct classes as blueprints!)
+
 function init(questions) {
 
     console.log("Please build your team")
     inquirer.prompt(questions).then(function (answer) {
         //create objects for each employee,
         //push objects to an array;
-
         if (answer.managername !== undefined) {
-
             let tempManager = new Manager(answer.managername, answer.managerid, answer.manageremail, answer.managerofficenumber)
             team.push(tempManager);
 
         }
-
         if (answer.typeteam === "Engineer") {
-
-            let tempEngineer = new Engineer(answer.engineername)
+            // name, id, email, github
+            let tempEngineer = new Engineer(answer.engineername, answer.engineerid, answer.engineeremail, answer.engineergithub)
             team.push(tempEngineer);
         }
         if (answer.typeteam === "Intern") {
-
-            let tempEngineer = new Engineer(answer.internname, answer.interid, answer.intermail, answer.interschool)
-            team.push(tempEngineer);
+            let tempIntern = new Intern(answer.internname, answer.internid, answer.internemail, answer.internschool)
+            team.push(tempIntern);
         }
 
         if (answer.managerofficenumber) {
             init(questions2);
         }
-        if (answer.addmore === "yes") {
+
+        console.log(team);
+
+        if (answer.addmore === "yes" || answer.addmoreIntern === "yes") {
             init(questions2);
         }
-        if (answer.addmore === "NONE") {
-            // render(arrayOfObjects);
+
+        // After the user has input all employees desired, call the `render` function (required
+        // above) and pass in an array containing all employee objects; the `render` function will
+        // generate and return a block of HTML including templated divs for each employee!
+        if (answer.typeteam === "NONE" || answer.addmore === "no" || answer.addmoreIntern === "no") {
+            console.log(render(team));
+            // const teamHTML = render(team);
+
+            // After you have your html, you're now ready to create an HTML file using the HTML
+            // returned from the `render` function. Now write it to a file named `team.html` in the
+            // `output` folder. You can use the variable `outputPath` above target this location.
+            // Hint: you may need to check if the `output` folder exists and create it if it
+            // does not.
+
+            const teamHTML = render(team);
+            if(!fs.existsSync(OUTPUT_DIR)){
+                fs.mkdirSync(OUTPUT_DIR);
+            }
+
+            fs.writeFile(outputPath, teamHTML, function(error){
+                if(error){
+                    console.log("something wrong when writting file")
+                }
+            })
+
+
         }
 
-        // console.log(answer);
     })
+
 }
 
 init(questions1);
-
-
-function render(teamArray){
-    
-}
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
