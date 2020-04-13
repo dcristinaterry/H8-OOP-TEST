@@ -18,7 +18,14 @@ const questions1 = [
     {
         type: "input",
         name: "managername",
-        message: "what is your manager's name?"
+        message: "what is your manager's name?",
+        validate: async (input) => {
+            if (input === "") {
+               return 'Incorrect asnwer';
+            }
+      
+            return true;
+         }
     },
     {
         type: "input",
