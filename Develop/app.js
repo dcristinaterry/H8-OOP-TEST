@@ -19,9 +19,9 @@ const questions1 = [
         type: "input",
         name: "managername",
         message: "what is your manager's name?",
-        validate: async (input) => {
+        validate: (input) => {
             if (input === "") {
-               return 'Incorrect asnwer';
+               return "Please enter a name";
             }
       
             return true;
@@ -30,17 +30,38 @@ const questions1 = [
     {
         type: "input",
         name: "managerid",
-        message: "what is your manager's id?"
+        message: "what is your manager's id?",
+        validate: (input) => {
+            if (input === "") {
+               return "Please enter an id";
+            }
+      
+            return true;
+         }
     },
     {
         type: "input",
         name: "manageremail",
-        message: "what is your manager's email?"
+        message: "what is your manager's email?",
+        validate: (input) => {
+            if (input === "") {
+               return "Please enter an email";
+            }
+      
+            return true;
+         }
     },
     {
         type: "input",
         name: "managerofficenumber",
-        message: "what is your manager's office number?"
+        message: "what is your manager's office number?",
+        validate: (input) => {
+            if (input === "") {
+               return "Please enter an office number";
+            }
+      
+            return true;
+         }
     }
 ]
 const questions2 = [
@@ -48,64 +69,121 @@ const questions2 = [
         type: "list",
         name: "typeteam",
         message: "what type of team would you like to add?",
-        choices: ["Engineer", "Intern", "NONE"]
+        choices: ["Engineer", "Intern", "NONE"],
     },
     {
         type: "input",
         name: "engineername",
         message: "Please enter Engineer's name:",
-        when: (answer) => answer.typeteam === "Engineer"
+        when: (answer) => answer.typeteam === "Engineer",
+        validate: (input) => {
+            if (input === "") {
+               return "Please enter a Name";
+            }
+      
+            return true;
+         }
     },
     {
         type: "input",
         name: "engineerid",
         message: "Please enter Engineer's id:",
-        when: (answer) => answer.engineername
+        when: (answer) => answer.engineername,
+        validate: (input) => {
+            if (input === "") {
+               return "Please enter an Id";
+            }
+      
+            return true;
+         }
     },
     {
         type: "input",
         name: "engineeremail",
         message: "Please enter Engineer's e-mail:",
-        when: (answer) => answer.engineerid
+        when: (answer) => answer.engineerid, 
+        validate: (input) => {
+            if (input === "") {
+               return "Please enter an e-mail";
+            }
+      
+            return true;
+         }
     },
     {
         type: "input",
         name: "engineergithub",
         message: "Please enter Engineer's GitHub:",
-        when: (answer) => answer.engineeremail
+        when: (answer) => answer.engineeremail,
+        validate: (input) => {
+            if (input === "") {
+               return "Please enter a GitHub account";
+            }
+      
+            return true;
+         }
     },
     {
         type: "list",
         message: "do you want to add more team members?",
         name: "addmore",
         choices: ["yes", "no"],
-        when: (answer) => answer.engineergithub
+        when: (answer) => answer.engineergithub,
     },
 
     {
         type: "input",
         message: "Please enter Intern's name:",
         name: "internname",
-        when: (answer) => answer.typeteam === "Intern"
+        when: (answer) => answer.typeteam === "Intern",
+        validate: (input) => {
+            if (input === "") {
+               return "Please enter a Name";
+            }
+      
+            return true;
+         }
+        
     },
 
     {
         type: "input",
         message: "Please enter Intern's id:",
         name: "internid",
-        when: (answer) => answer.internname
+        when: (answer) => answer.internname,
+        validate: (input) => {
+            if (input === "") {
+               return "Please enter an ID;
+            }
+      
+            return true;
+         }
     },
     {
         type: "input",
-        message: "Please enter Intern's email:",
+        message: "Please enter Intern's e-mail:",
         name: "internemail",
-        when: (answer) => answer.internid
+        when: (answer) => answer.internid,
+        validate: (input) => {
+            if (input === "") {
+               return "Please enter an e-mail";
+            }
+      
+            return true;
+         }
     },
     {
         type: "input",
         message: "Please enter Intern's school:",
         name: "internschool",
-        when: (answer) => answer.internemail
+        when: (answer) => answer.internemail,
+        validate: (input) => {
+            if (input === "") {
+               return "Please enter a school";
+            }
+      
+            return true;
+         }
     },
 
     {
