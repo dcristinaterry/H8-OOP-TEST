@@ -44,8 +44,10 @@ const questions1 = [
         name: "manageremail",
         message: "what is your manager's email?",
         validate: (input) => {
-            if (input === "") {
-               return "Please enter an email";
+            const pass = input.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+
+            if (input === "" || !pass) {
+               return "Please enter a valid e-mail";
             }
       
             return true;
@@ -103,8 +105,10 @@ const questions2 = [
         message: "Please enter Engineer's e-mail:",
         when: (answer) => answer.engineerid, 
         validate: (input) => {
-            if (input === "") {
-               return "Please enter an e-mail";
+            const pass = input.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+
+            if (input === "" || !pass) {
+               return "Please enter a valid e-mail";
             }
       
             return true;
@@ -140,7 +144,6 @@ const questions2 = [
             if (input === "") {
                return "Please enter a Name";
             }
-      
             return true;
          }
         
@@ -153,9 +156,8 @@ const questions2 = [
         when: (answer) => answer.internname,
         validate: (input) => {
             if (input === "") {
-               return "Please enter an ID;
+               return "Please enter an ID"
             }
-      
             return true;
          }
     },
@@ -165,10 +167,11 @@ const questions2 = [
         name: "internemail",
         when: (answer) => answer.internid,
         validate: (input) => {
-            if (input === "") {
-               return "Please enter an e-mail";
+            const pass = input.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+
+            if (input === "" || !pass) {
+               return "Please enter a valid e-mail";
             }
-      
             return true;
          }
     },
@@ -196,7 +199,6 @@ const questions2 = [
     }
 
 ]
-
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
