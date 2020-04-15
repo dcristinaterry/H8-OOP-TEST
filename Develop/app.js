@@ -228,7 +228,7 @@ function init(questions) {
             init(questions2);
         }
 
-        console.log(team);
+        //console.log(team);
 
         if (answer.addmore === "yes" || answer.addmoreIntern === "yes") {
             init(questions2);
@@ -238,7 +238,7 @@ function init(questions) {
         // above) and pass in an array containing all employee objects; the `render` function will
         // generate and return a block of HTML including templated divs for each employee!
         if (answer.typeteam === "NONE" || answer.addmore === "no" || answer.addmoreIntern === "no") {
-            console.log(render(team));
+            // console.log(render(team));
             // const teamHTML = render(team);
 
             // After you have your html, you're now ready to create an HTML file using the HTML
